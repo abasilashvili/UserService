@@ -1,7 +1,7 @@
-package com.abasilashvili.user_service.controller;
+package com.abasilashvili.user_service.controller.recommendation;
 
 import com.abasilashvili.user_service.dto.recommendation.RecommendationDto;
-import com.abasilashvili.user_service.service.RecommendationService;
+import com.abasilashvili.user_service.service.recommendation.RecommendationService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -36,7 +36,7 @@ public class RecommendationController {
     }
 
     @PutMapping("/update-recommendation")
-    public void updateRecommendation(RecommendationDto updated) {
+    public void updateRecommendation(@RequestBody RecommendationDto updated) {
         log.info("Получил запрос на обновление рекоммендации.");
         recommendationService.updateRecommendation(updated);
     }

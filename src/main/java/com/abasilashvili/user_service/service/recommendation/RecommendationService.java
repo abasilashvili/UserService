@@ -1,4 +1,4 @@
-package com.abasilashvili.user_service.service;
+package com.abasilashvili.user_service.service.recommendation;
 
 import com.abasilashvili.user_service.dto.recommendation.RecommendationDto;
 import com.abasilashvili.user_service.dto.recommendation.SkillOfferDto;
