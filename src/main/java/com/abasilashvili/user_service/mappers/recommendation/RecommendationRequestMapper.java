@@ -1,4 +1,4 @@
-package com.abasilashvili.user_service.mappers;
+package com.abasilashvili.user_service.mappers.recommendation;
 
 import com.abasilashvili.user_service.dto.recommendation.RecommendationRequestDto;
 import com.abasilashvili.user_service.dto.skill.SkillDto;

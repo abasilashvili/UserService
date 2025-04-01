@@ -4,7 +4,7 @@ import com.abasilashvili.user_service.dto.recommendation.RecommendationDto;
 import com.abasilashvili.user_service.dto.recommendation.SkillOfferDto;
 import com.abasilashvili.user_service.exceptions.AlreadyExistsException;
 import com.abasilashvili.user_service.exceptions.ValidationException;
-import com.abasilashvili.user_service.mappers.RecommendationDtoMapper;
+import com.abasilashvili.user_service.mappers.recommendation.RecommendationDtoMapper;
 import com.abasilashvili.user_service.repository.recommendation.RecommendationRepository;
 import com.abasilashvili.user_service.repository.recommendation.SkillOfferRepository;
 import jakarta.transaction.Transactional;
