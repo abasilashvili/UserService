@@ -1,4 +1,4 @@
-package com.abasilashvili.user_service.mappers;
+package com.abasilashvili.user_service.mappers.skill;
 
 import com.abasilashvili.user_service.dto.skill.SkillDto;
 import com.abasilashvili.user_service.entity.Skill;

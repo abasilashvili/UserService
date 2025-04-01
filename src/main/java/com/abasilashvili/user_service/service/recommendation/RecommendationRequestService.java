@@ -1,7 +1,6 @@
 package com.abasilashvili.user_service.service.recommendation;
 
 import com.abasilashvili.user_service.config.properties.recommendation.RecommendationProperties;
-import com.abasilashvili.user_service.dto.recommendation.RecommendationDto;
 import com.abasilashvili.user_service.dto.recommendation.RecommendationRequestDto;
 import com.abasilashvili.user_service.dto.recommendation.RejectionDto;
 import com.abasilashvili.user_service.dto.recommendation.RequestFilterDto;
@@ -14,7 +13,7 @@ import com.abasilashvili.user_service.entity.recommendation.SkillRequest;
 import com.abasilashvili.user_service.exceptions.SkillDoesntExistException;
 import com.abasilashvili.user_service.exceptions.UserNotFoundException;
 import com.abasilashvili.user_service.exceptions.ValidationException;
-import com.abasilashvili.user_service.mappers.RecommendationRequestMapper;
+import com.abasilashvili.user_service.mappers.recommendation.RecommendationRequestMapper;
 import com.abasilashvili.user_service.repository.SkillRepository;
 import com.abasilashvili.user_service.repository.UserRepository;
 import com.abasilashvili.user_service.repository.recommendation.RecommendationRequestRepository;

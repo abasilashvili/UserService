@@ -1,4 +1,4 @@
-package com.abasilashvili.user_service.mappers;
+package com.abasilashvili.user_service.mappers.recommendation;
 
 import com.abasilashvili.user_service.dto.recommendation.RecommendationDto;
 import com.abasilashvili.user_service.entity.recommendation.Recommendation;
