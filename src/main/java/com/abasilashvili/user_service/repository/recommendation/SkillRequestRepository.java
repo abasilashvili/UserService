@@ -12,5 +12,5 @@ public interface SkillRequestRepository extends CrudRepository<SkillRequest, Lon
             VALUES (:requestId, :skillId)
             """)
     @Modifying
-    SkillRequest create(long requestId, long skillId);
+    void create(long requestId, long skillId);
 }

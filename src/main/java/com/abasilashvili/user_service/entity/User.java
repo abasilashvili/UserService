@@ -21,6 +21,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 import com.abasilashvili.user_service.entity.contact.Contact;
@@ -167,4 +168,13 @@ public class User {
 
     @OneToOne(mappedBy = "user")
     private WorkSchedule workSchedule;
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", name='" + username + '\'' +
+                ", country=" + (country != null ? country.getTitle() : "null") +
+                '}';
+    }
 }
