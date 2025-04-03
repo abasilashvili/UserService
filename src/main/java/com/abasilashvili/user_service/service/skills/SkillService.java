@@ -1,4 +1,4 @@
-package com.abasilashvili.user_service.service;
+package com.abasilashvili.user_service.service.skills;
 
 import com.abasilashvili.user_service.dto.skill.SkillCandidateDto;
 import com.abasilashvili.user_service.dto.skill.SkillDto;
