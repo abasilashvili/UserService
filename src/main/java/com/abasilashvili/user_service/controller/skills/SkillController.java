@@ -1,9 +1,8 @@
-package com.abasilashvili.user_service.controller;
+package com.abasilashvili.user_service.controller.skills;
 
 import com.abasilashvili.user_service.dto.skill.SkillCandidateDto;
 import com.abasilashvili.user_service.dto.skill.SkillDto;
-import com.abasilashvili.user_service.entity.Skill;
-import com.abasilashvili.user_service.service.SkillService;
+import com.abasilashvili.user_service.service.skills.SkillService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
