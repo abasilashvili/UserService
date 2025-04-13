@@ -3,18 +3,15 @@ package com.abasilashvili.user_service.service.subscriptions;
 import com.abasilashvili.user_service.dto.subscriptions.SubscribeDto;
 import com.abasilashvili.user_service.dto.user.UserDto;
 import com.abasilashvili.user_service.dto.user.UserFilterDto;
-import com.abasilashvili.user_service.exceptions.SubscriptionAlreadyExistsException;
-import com.abasilashvili.user_service.exceptions.ValidationException;
 import com.abasilashvili.user_service.mappers.user.UserMapper;
 import com.abasilashvili.user_service.repository.SubscriptionRepository;
+import com.abasilashvili.user_service.validator.subscriptions.SubscriptionServiceValidations;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Objects;
 
 @RequiredArgsConstructor
 @Service
@@ -88,26 +85,3 @@ public class SubscriptionService {
     }
 }
 
-@Component
-@Slf4j
-@RequiredArgsConstructor
-class SubscriptionServiceValidations {
-
-    private final SubscriptionRepository subscriptionRepository;
-
-    public void validateId(SubscribeDto dto) {
-
-        log.info("Validating request.");
-
-        Long followerId = dto.getFollowerId();
-        Long followeeId = dto.getFolloweeId();
-
-        if (Objects.equals(followeeId, followerId)) {
-            throw new ValidationException("You can't subscribe/unsubscribe yourself!");
-        }
-
-        if (subscriptionRepository.existsByFollowerIdAndFolloweeId(followerId, followeeId)) {
-            throw new SubscriptionAlreadyExistsException("You are already following this user.");
-        }
-    }
-}

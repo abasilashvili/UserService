@@ -3,9 +3,11 @@ package com.abasilashvili.user_service.repository.recommendation;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import com.abasilashvili.user_service.entity.recommendation.RecommendationRequest;
+import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
 
+@Repository
 public interface RecommendationRequestRepository extends JpaRepository<RecommendationRequest, Long> {
 
     @Query(nativeQuery = true, value = """

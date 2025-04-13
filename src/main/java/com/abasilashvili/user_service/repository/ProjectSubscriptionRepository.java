@@ -3,7 +3,9 @@ package com.abasilashvili.user_service.repository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import com.abasilashvili.user_service.entity.ProjectSubscription;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public interface ProjectSubscriptionRepository extends CrudRepository<ProjectSubscription, Long> {
     @Query(nativeQuery = true,
             value = "select exists (select 1 from project_subscription where follower_id = :followerId and project_id = :projectId)")

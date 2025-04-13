@@ -4,10 +4,12 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import com.abasilashvili.user_service.entity.User;
 import com.abasilashvili.user_service.entity.goal.Goal;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.stream.Stream;
 
+@Repository
 public interface GoalRepository extends JpaRepository<Goal, Long> {
 
     @Query(nativeQuery = true, value = """
