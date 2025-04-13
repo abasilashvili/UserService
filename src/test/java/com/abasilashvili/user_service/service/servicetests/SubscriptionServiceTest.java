@@ -38,8 +38,4 @@ public class SubscriptionServiceTest {
 //        dto.setSubscribedAt(LocalDateTime.now());
 //    }
 
-    @Test
-    public void testValidator() {
-
-    }
 }
