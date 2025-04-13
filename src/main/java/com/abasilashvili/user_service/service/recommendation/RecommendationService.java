@@ -89,6 +89,10 @@ public class RecommendationService {
             throw new ValidationException("Не указан получатель рекоммендации");
         }
 
+        if (recommendationDto.getAuthorId().equals(recommendationDto.getReceiverId())) {
+            throw new AlreadyExistsException("Автор не может рекомендовать самого себя");
+        }
+
         LocalDateTime sixMonthsAgo = LocalDateTime.now().minusMonths(6);
         if (recommendationDto.getCreatedAt() != null &&
                 recommendationDto.getCreatedAt().isAfter(sixMonthsAgo)) {
