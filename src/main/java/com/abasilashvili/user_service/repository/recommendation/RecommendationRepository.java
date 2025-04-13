@@ -6,9 +6,11 @@ import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import com.abasilashvili.user_service.entity.recommendation.Recommendation;
+import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
 
+@Repository
 public interface RecommendationRepository extends CrudRepository<Recommendation, Long> {
 
     @Query(nativeQuery = true, value = """

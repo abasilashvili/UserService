@@ -2,26 +2,21 @@ package com.abasilashvili.user_service.service.event;
 
 import com.abasilashvili.user_service.dto.event.EventDto;
 import com.abasilashvili.user_service.dto.event.EventFilterDto;
-import com.abasilashvili.user_service.dto.skill.SkillDto;
-import com.abasilashvili.user_service.dto.user.UserDto;
-import com.abasilashvili.user_service.dto.user.UserFilterDto;
 import com.abasilashvili.user_service.entity.Skill;
 import com.abasilashvili.user_service.entity.User;
 import com.abasilashvili.user_service.entity.event.Event;
 import com.abasilashvili.user_service.entity.event.EventStatus;
 import com.abasilashvili.user_service.entity.event.EventType;
-import com.abasilashvili.user_service.exceptions.SkillDoesntExistException;
-import com.abasilashvili.user_service.exceptions.UserNotFoundException;
 import com.abasilashvili.user_service.exceptions.ValidationException;
 import com.abasilashvili.user_service.mappers.event.EventMapper;
 import com.abasilashvili.user_service.mappers.skill.SkillDtoMapper;
 import com.abasilashvili.user_service.repository.UserRepository;
 import com.abasilashvili.user_service.repository.event.EventRepository;
+import com.abasilashvili.user_service.validator.event.EventServiceValidation;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -155,56 +150,3 @@ public class EventService {
     }
 }
 
-@Component
-@Slf4j
-@RequiredArgsConstructor
-class EventServiceValidation {
-
-    private final UserRepository userRepository;
-    private final SkillDtoMapper skillDtoMapper;
-
-    public void validateEvent(EventDto eventDto) {
-        log.info("Starting validation.");
-        validateTitle(eventDto.getTitle());
-        validateStartDate(eventDto.getStartDate());
-        validateOwner(eventDto.getOwnerId());
-        validateSkills(eventDto);
-        log.info("Validation passed.");
-    }
-
-    public void validateTitle(String title) {
-        if (title.isEmpty()) {
-            log.warn("Event must have title.");
-            throw new ValidationException("Event must have title.");
-        }
-    }
-
-    public void validateStartDate(LocalDateTime startDate) {
-        if (startDate == null) {
-            log.warn("Event must have start date.");
-            throw new ValidationException("Event must have start date.");
-        }
-    }
-
-    public void validateOwner(Long id) {
-        if (id == null) {
-            log.info("Event must have valid owner.");
-            throw new UserNotFoundException("Event must have valid owner.");
-        }
-    }
-
-    public void validateSkills(EventDto dto) {
-        List<SkillDto> userSkills = userRepository.findById(dto.getOwnerId())
-                .orElseThrow(() -> new UserNotFoundException("User not found."))
-                .getSkills().stream()
-                .map(skillDtoMapper::toDto)
-                .toList();
-
-        List<SkillDto> eventsSkills = dto.getRelatedSkills();
-
-        if (!userSkills.containsAll(eventsSkills)) {
-            log.warn("You can't start event because you don't have enough skills yet.");
-            throw new SkillDoesntExistException("You can't start event because you don't have enough skills yet.");
-        }
-    }
-}
