@@ -2,12 +2,14 @@ package com.abasilashvili.user_service.mappers.recommendation;
 
 import com.abasilashvili.user_service.dto.recommendation.RecommendationRequestDto;
 import com.abasilashvili.user_service.dto.skill.SkillDto;
+import com.abasilashvili.user_service.entity.RequestStatus;
 import com.abasilashvili.user_service.entity.User;
 import com.abasilashvili.user_service.entity.recommendation.RecommendationRequest;
 import com.abasilashvili.user_service.entity.recommendation.SkillRequest;
 import com.abasilashvili.user_service.repository.UserRepository;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
+import org.mapstruct.Named;
 import org.mapstruct.ReportingPolicy;
 import org.springframework.beans.factory.annotation.Autowired;
 
